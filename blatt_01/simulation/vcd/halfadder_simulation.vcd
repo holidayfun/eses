@@ -1,0 +1,38 @@
+$date
+	Fri May 12 15:12:52 2017
+$end
+$version
+	QuestaSim Version 10.4c_5
+$end
+$timescale
+	1ns
+$end
+
+$scope module halfadder $end
+$var wire 1 ! A $end
+$var wire 1 " B $end
+$var wire 1 # S $end
+$var wire 1 $ C $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+0#
+0$
+$end
+#10
+1!
+1#
+#20
+1"
+0!
+#30
+1!
+1$
+0#
+#40
+0"
+0!
+0$

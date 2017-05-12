@@ -1,0 +1,200 @@
+# //  Questa Sim-64
+# //  Version 10.4c_5 linux_x86_64 Nov 14 2015
+# //
+# //  Copyright 1991-2015 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading project test_project
+# Compile of halfadder.vhd was successful.
+# Compile of fulladder.vhd failed with 4 errors.
+# 2 compiles, 1 failed with 4 errors.
+# Compile of halfadder.vhd was successful.
+# Compile of fulladder.vhd failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of halfadder.vhd was successful.
+# Compile of fulladder.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -novopt work.fulladder
+# vsim -novopt work.fulladder 
+# Start time: 15:26:19 on May 12,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading std.standard
+# Refreshing /afs/informatik.uni-tuebingen.de/home/hartmann/work.fulladder(struct)
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading work.fulladder(struct)
+# Refreshing /afs/informatik.uni-tuebingen.de/home/hartmann/work.halfadder(behave)
+# Loading work.halfadder(behave)
+# ** Warning: (vsim-3473) Component instance "U3 : ORGATE" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /fulladder File: /afs/informatik.uni-tuebingen.de/home/hartmann/fulladder.vhd
+add wave -position insertpoint  \
+sim:/fulladder/A
+add wave -position insertpoint  \
+sim:/fulladder/B
+add wave -position insertpoint  \
+sim:/fulladder/C_in
+add wave -position insertpoint  \
+sim:/fulladder/S
+add wave -position insertpoint  \
+sim:/fulladder/C
+force A 0
+force B 0
+force C_in 0
+run 100
+force A 1
+run 100
+force B 1
+run 100
+force C_in 1
+run 100
+quit -sim
+# End time: 15:27:46 on May 12,2017, Elapsed time: 0:01:27
+# Errors: 0, Warnings: 2
+vsim -novopt work.fulladder
+# vsim -novopt work.fulladder 
+# Start time: 15:28:11 on May 12,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading work.fulladder(struct)
+# Loading work.halfadder(behave)
+# ** Warning: (vsim-3473) Component instance "U3 : ORGATE" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /fulladder File: /afs/informatik.uni-tuebingen.de/home/hartmann/fulladder.vhd
+add wave -position insertpoint  \
+sim:/fulladder/A
+add wave -position insertpoint  \
+sim:/fulladder/B
+add wave -position insertpoint  \
+sim:/fulladder/C_in
+add wave -position insertpoint  \
+sim:/fulladder/S
+add wave -position insertpoint  \
+sim:/fulladder/C
+add wave -position insertpoint  \
+sim:/fulladder/i1
+add wave -position insertpoint  \
+sim:/fulladder/i2
+add wave -position insertpoint  \
+sim:/fulladder/i3
+force A 0
+force B 0
+force C_in 0
+run 100
+force A 1
+force B 1
+run 100
+quit -sim
+# End time: 15:30:17 on May 12,2017, Elapsed time: 0:02:06
+# Errors: 0, Warnings: 2
+# Compile of halfadder.vhd was successful.
+# Compile of fulladder.vhd was successful.
+# Compile of orgatter.vhd was successful.
+# 3 compiles, 0 failed with no errors.
+vsim -novopt work.fulladder
+# vsim -novopt work.fulladder 
+# Start time: 15:34:14 on May 12,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading std.standard
+# Refreshing /afs/informatik.uni-tuebingen.de/home/hartmann/work.fulladder(struct)
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading work.fulladder(struct)
+# Refreshing /afs/informatik.uni-tuebingen.de/home/hartmann/work.halfadder(behave)
+# Loading work.halfadder(behave)
+# Refreshing /afs/informatik.uni-tuebingen.de/home/hartmann/work.orgatter(behave)
+# Loading work.orgatter(behave)
+add wave -position insertpoint  \
+sim:/fulladder/A
+add wave -position insertpoint  \
+sim:/fulladder/B
+add wave -position insertpoint  \
+sim:/fulladder/C_in
+add wave -position insertpoint  \
+sim:/fulladder/S
+add wave -position insertpoint  \
+sim:/fulladder/C
+force A 1
+force B 1
+force C_in 0
+run 100
+force C_in 1
+run 100
+force A 0
+run 100
+force B 0
+run 100
+quit -sim
+# End time: 15:36:08 on May 12,2017, Elapsed time: 0:01:54
+# Errors: 0, Warnings: 1
+vsim -novopt work.fulladder
+# vsim -novopt work.fulladder 
+# Start time: 15:36:16 on May 12,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading work.fulladder(struct)
+# Loading work.halfadder(behave)
+# Loading work.orgatter(behave)
+vcd file fulladder_simulation.vcd
+add wave -position insertpoint  \
+sim:/fulladder/A
+add wave -position insertpoint  \
+sim:/fulladder/B
+add wave -position insertpoint  \
+sim:/fulladder/C_in
+add wave -position insertpoint  \
+sim:/fulladder/S
+add wave -position insertpoint  \
+sim:/fulladder/C
+add wave -position insertpoint  \
+sim:/fulladder/i1
+add wave -position insertpoint  \
+sim:/fulladder/i2
+add wave -position insertpoint  \
+sim:/fulladder/i3
+vcd add fulladder/*
+force A 0
+force B 0
+force C_in 0
+run 10
+force C_in 1
+run 10
+force C_in 0
+force B 1
+run 10
+force C_in 1
+run 10
+force C_1 0
+# ** Error (suppressible): (vish-4008) Object 'C_1' not found.
+# 
+force C_in 0
+force B 0
+force A 1
+run 10
+force C_in 1
+run 10
+force C_in 0
+force B 1
+run 10
+force C_in 1
+run 10
+force A 0
+force B 0
+force C_in 0
+run 10
+# Causality operation skipped due to absence of debug database file
