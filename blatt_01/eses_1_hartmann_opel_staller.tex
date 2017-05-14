@@ -1,0 +1,59 @@
+\documentclass[a4paper]{scrartcl}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{verbatim}
+
+\usepackage{listings}
+\setlength{\parindent}{0mm}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+
+\pagestyle{fancy}
+\fancyhead[L]{SS 2017\\Joshua Hartmann}
+\fancyhead[C]{Entwurf und Synthese von Eingebetteten Systemen\\Manfred Opel}
+\fancyhead[R]{Blatt 1\\Nicolas Staller}
+
+\fancyfoot[L]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+\fancyfoot[R]{}
+
+\renewcommand{\textheight}{700px}
+\renewcommand{\footskip}{10px}
+\newcommand*\xor{\mathbin{\oplus}}
+\begin{document}	
+	\section*{Aufgabe 1}
+	
+	\begin{enumerate}[(a)]
+		\item Der Floorplan stellt die einzelnen funktionalen Baugruppen angeordnet auf dem Chip dar. Er ist damit der Geometrie-Achse zuzuordnen.
+		\item Die Netzliste ist die Beschreibung der Struktur der einzelnen Komponenten. Sie ist damit der Struktur-Achse zuzuordnen.
+		\item In der Register-Transfer-Ebene.
+		\item Von der algorithmischen Ebene zur RT-Ebene gelangt man durch High-Level-Synthese. Durch Einbinden von Bibliotheken kann die RTL-Beschreibung dann von der Struktur- auf die Verhaltenssicht abgebildet werden.
+		\item Intellectual Properties sind Entwürfe von Subsystemen, die zu einem komplexeren System kombiniert werden können. 
+		Es gibt drei Arten von IPs:
+		
+		\begin{enumerate}[i.]
+			\item Soft IP: Die Komponente liegt in höherer Hardwarebeschreibungssprache wie VHDL oder Verilog vor und kann deshalb noch angepasst werden.
+			\item Hart IP: Die Komponente liegt nicht in höherer Hardwarebeschreibungssprache wie VHDL oder Verilog vor, sondern wird als bereits fertiggestelltes Layout geliefert.
+			\item Firm IP:  Die Komponente ist bereits mit strukturellen Daten zur Platzierung der Baugruppen versehen, kann jedoch noch für verschiedene Anwendungsfälle konfiguriert werden. 
+		\end{enumerate}		
+				
+		Besonders beim Plattformbasierten Entwurf werden IPs eingesetzt, vereinzelt aber auch beim Blockbasierten Entwurf.
+		\item \hfil
+		
+		\begin{enumerate}[i.]
+			\item Nexperia HW-Architektur
+			\item TI OMAP 5912 HW-Architektur
+			\item Qualcom MSM5100 HW-Architektur
+		\end{enumerate}
+	\end{enumerate}
+
+	
+\end{document}
+
