@@ -28,23 +28,28 @@
 \renewcommand{\footskip}{10px}
 \newcommand*\xor{\mathbin{\oplus}}
 \begin{document}	
-	\section*{Aufgabe 1}
+	\section*{Aufgabe 1: Fragen zur Vorlesung}
 	
 	\begin{enumerate}[(a)]
 		\item Die Entity beschreibt die Schnittstelle der Schaltung, also alle ein- und ausgehenden Signale, sowie deren Typ. Die Architecture beschreibt das tatsächliche Verhalten der Schaltung, implementiert also eine Schaltung, die die in der Entity definierten Ein- und Ausgangssignale verarbeitet. Zu einer Entity können mehrere Architectures erstellt werden.
 		
-		\item Standardmäßig wird die zuletzt kompilierte Architecture verwendet, soll eine andere verwendet werden, muss eine Konfiguration verwendet werden. Ja, die Verwendung beider Architectures ist möglich, wie zum Beispiel bei einem Volladdierer, der aus zwei Halbaddierern besteht.
-			
-		\item Der längste Pfad über UND, HA, HA, FA, FA, FA für P4 beträgt 14 ns. Damit beträgt die maximale Taktrate $\frac{1}{14*10^-9}$ = 71428571 Hz.
+		\item Standardmäßig wird die zuletzt kompilierte Architecture verwendet, soll eine andere verwendet werden, muss eine Konfiguration verwendet werden. Es können nicht beide Architectures im selben Design verwendet werden, aber man kann in hintereinanderfolgenden Simulationen/Synthesen verschiedene Architectures auswählen und die Auswirkungen untersuchen.
 		
-		\item Signale werden in Architectures definiert, aktivieren durch ihre Änderung die Ausführung eines Prozesses und werden erst nach Beendigung des Prozesses aktualisiert. Ein Port wird in der Entity definiert und kann von einem Signal oder einer Variablen entweder gelesen oder beschrieben werden, abhängig davon ob es sich um einen in oder out Port handelt.
+		
+		\item Der längste Pfad über UND, HA, HA, FA, FA, FA für P4 beträgt 14 ns. Damit beträgt die maximale Taktrate $\frac{1}{14\cdot10^{-9}}$ = 71.428.571 Hz. Eine Änderung an den Eingängen muss sich im schlimmsten Fall durch die besagte Kette komplett durchpropagieren, um das Ergebnis für P4 zu verändern.
+		
+		\item Signale werden in Architectures definiert und sind auch nur lokal für diese Komponente gültig/sichtbar. Ein Port wird in der Entity definiert und kann von einem Signal oder einer Variablen entweder gelesen oder beschrieben werden, abhängig davon ob es sich um einen in oder out Port handelt. Ports sind die Schnittstellen zwischen verschiedenen Komponenten.
 		
 		\item Wenn ein Signal mehrere Treiber hat, kann der Wert des Signals undefiniert sein, falls z.B. ein Prozess das Signal auf 1 setzen will, ein anderer das Signal auf 0. Es ist trotzdem möglich, dass mehrere Prozesse auf dasselbe Signal schreiben, wenn eine Auflösungsfunktion verwendet wird, die den für jede Kombination von Werten einen definierten Ausgangswert für das Signal hat. Eine andere Lösung ist es, zu verbieten, dass mehr als ein Prozess das Signal beschreibt.
 		
-\item  Eine Testbench dient dazu ein erstelltes Design vor der Synthese auf korrekte Funktionalität zu prüfen. Dazu werden alle Eingangssignale mit unterschiedlichen Werten an das Design angelegt um die Reaktion auf diverse Stimuli zu untersuchen.		
+		\item  Eine Testbench dient dazu, ein erstelltes Design vor der Synthese auf korrekte Funktionalität zu prüfen. Dazu werden alle Eingangssignale mit unterschiedlichen Werten an das Design angelegt um die Reaktion auf diverse Stimuli zu untersuchen.		
 	
 	\end{enumerate}
 
+	\section*{Aufgabe 2: Fragen zur Vorlesung}
 	
+	(c) Jeder Volladdierer hat eine Verzögerung von 1ns. Da der Carry Ausgang eines Volladdierers an den Carry Eingang des nächsten gelegt wird, ergibt sich eine Kette von Volladdieren, durch die ein evtl Carry Bit durchpropagiert werden muss.\\
+	Im schlimmsten Fall sorgt das Carry Out Bit des ersten Volladdierers dafür, dass sich das Ergebnis des jeweils nächsten Volladdierers ändert, was weitere Änderungen weiter hinten bewirkt.\\
+	Bei 16 Bit brauchen wir 16 Volladdierer, es kann sich also eine Kette von 16ns aufbauen, die im schlimmsten Fall vergehen muss, bis das Ausgangssignal am letzten Volladierer korrekt und stabil anliegt. Ein maximaler Takt von $\frac{1}{16 \cdot 10 ^{-9}s} = 62.500.000Hz$ ist damit möglich. 
 \end{document}
 
