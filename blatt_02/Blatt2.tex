@@ -1,0 +1,50 @@
+\documentclass[a4paper]{scrartcl}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{verbatim}
+
+\usepackage{listings}
+\setlength{\parindent}{0mm}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+
+\pagestyle{fancy}
+\fancyhead[L]{SS 2017\\Joshua Hartmann}
+\fancyhead[C]{Entwurf und Synthese von Eingebetteten Systemen\\Manfred Opel}
+\fancyhead[R]{Blatt 1\\Nicolas Staller}
+
+\fancyfoot[L]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+\fancyfoot[R]{}
+
+\renewcommand{\textheight}{700px}
+\renewcommand{\footskip}{10px}
+\newcommand*\xor{\mathbin{\oplus}}
+\begin{document}	
+	\section*{Aufgabe 1}
+	
+	\begin{enumerate}[(a)]
+		\item Die Entity beschreibt die Schnittstelle der Schaltung, also alle ein- und ausgehenden Signale, sowie deren Typ. Die Architecture beschreibt das tatsächliche Verhalten der Schaltung, implementiert also eine Schaltung, die die in der Entity definierten Ein- und Ausgangssignale verarbeitet. Zu einer Entity können mehrere Architectures erstellt werden.
+		
+		\item Standardmäßig wird die zuletzt kompilierte Architecture verwendet, soll eine andere verwendet werden, muss eine Konfiguration verwendet werden. Ja, die Verwendung beider Architectures ist möglich, wie zum Beispiel bei einem Volladdierer, der aus zwei Halbaddierern besteht.
+			
+		\item Der längste Pfad über UND, HA, HA, FA, FA, FA für P4 beträgt 14 ns. Damit beträgt die maximale Taktrate $\frac{1}{14*10^-9}$ = 71428571 Hz.
+		
+		\item Signale werden in Architectures definiert, aktivieren durch ihre Änderung die Ausführung eines Prozesses und werden erst nach Beendigung des Prozesses aktualisiert. Ein Port wird in der Entity definiert und kann von einem Signal oder einer Variablen entweder gelesen oder beschrieben werden, abhängig davon ob es sich um einen in oder out Port handelt.
+		
+		\item Wenn ein Signal mehrere Treiber hat, kann der Wert des Signals undefiniert sein, falls z.B. ein Prozess das Signal auf 1 setzen will, ein anderer das Signal auf 0. Es ist trotzdem möglich, dass mehrere Prozesse auf dasselbe Signal schreiben, wenn eine Auflösungsfunktion verwendet wird, die den für jede Kombination von Werten einen definierten Ausgangswert für das Signal hat. Eine andere Lösung ist es, zu verbieten, dass mehr als ein Prozess das Signal beschreibt.
+		
+\item  Eine Testbench dient dazu ein erstelltes Design vor der Synthese auf korrekte Funktionalität zu prüfen. Dazu werden alle Eingangssignale mit unterschiedlichen Werten an das Design angelegt um die Reaktion auf diverse Stimuli zu untersuchen.		
+	
+	\end{enumerate}
+
+	
+\end{document}
+
