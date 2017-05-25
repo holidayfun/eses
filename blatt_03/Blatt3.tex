@@ -1,0 +1,53 @@
+\documentclass[a4paper]{scrartcl}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{verbatim}
+
+\usepackage{listings}
+\setlength{\parindent}{0mm}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+
+\pagestyle{fancy}
+\fancyhead[L]{SS 2017\\Joshua Hartmann}
+\fancyhead[C]{Entwurf und Synthese von Eingebetteten Systemen\\Manfred Opel}
+\fancyhead[R]{Blatt 3\\Nicolas Staller}
+
+\fancyfoot[L]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+\fancyfoot[R]{}
+
+\renewcommand{\textheight}{700px}
+\renewcommand{\footskip}{10px}
+\newcommand*\xor{\mathbin{\oplus}}
+\begin{document}	
+	\section*{Aufgabe 1}
+	
+	\begin{enumerate}[(a)]
+		
+\item In Fall 1 schreibt der linke Teil der Schaltung eine 1 auf den Bus und der rechte Teile eine 0. Daher ist der Zustand des Signals auf dem Bus undefiniert also X.
+
+In Fall 2 schreiben beide Teile der Schaltung eine 0, daher liegt auf dem Bus eine 0.
+
+\item Während eines Deltazyklus werden Prozesse abgearbeitet und Signale aktualisiert. Simulationszeit vergeht währenddessen keine.
+
+\item Mit den Anweisungen \glqq after \grqq, \glqq wait\grqq for lässt sich direkt die Simulationszeit beeinflussen. Durch \glqq wait on\grqq, \glqq wait until \grqq und \glqq wait\grqq lässt sich indirekt die Simulationszeit dadurch beeinflussen, dass auf Signale bzw. bestimmte Bedingungen gewartet wird.
+
+\item Wenn sich Eingang a von 0 auf 1 ändert, werden unendlich viele Deltazyklen durchlaufen, da sich der Wert von z jedes mal ändert. Da z in der Sensitivitätsliste des Prozesses steht, wird dieser mit jeder Änderung von z aufgerufen. 
+
+Wenn sich Eingang a von 1 auf 0 ändert gibt es zwei Fälle. Wenn z = 1 ist ändert sich der Wert von z nicht mehr und es wird ein Deltazyklus durchlaufen.
+Wenn z = 0 ist wird dieser im ersten Durchlauf auf 1 gesetzt und daraufhin wird der Prozess noch einmal aufgerufen, der Wert von z ändert sich dann aber nicht mehr, also zwei Deltazyklen. 
+
+	
+	\end{enumerate}
+
+	
+\end{document}
+
