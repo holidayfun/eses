@@ -34,11 +34,11 @@
 		
 \item In Fall 1 schreibt der linke Teil der Schaltung eine 1 auf den Bus und der rechte Teile eine 0. Daher ist der Zustand des Signals auf dem Bus undefiniert also X.
 
-In Fall 2 schreiben beide Teile der Schaltung eine 0, daher liegt auf dem Bus eine 0.
+In Fall 2 sind beide Treiber nicht enabled, durch den pull down Widerstan wird der Bus damit auf den Wert 0 gezogen.
 
-\item Während eines Deltazyklus werden Prozesse abgearbeitet und Signale aktualisiert. Simulationszeit vergeht währenddessen keine.
+\item Während eines Deltazyklus werden Prozesse abgearbeitet und Signale aktualisiert, bis sich ein stabiler Zustand eingependelt hat. Simulationszeit vergeht währenddessen keine.
 
-\item Mit den Anweisungen \glqq after \grqq, \glqq wait\grqq for lässt sich direkt die Simulationszeit beeinflussen. Durch \glqq wait on\grqq, \glqq wait until \grqq und \glqq wait\grqq lässt sich indirekt die Simulationszeit dadurch beeinflussen, dass auf Signale bzw. bestimmte Bedingungen gewartet wird.
+\item Mit den Anweisungen \glqq after \grqq, \glqq wait for \grqq \hspace{5pt} lässt sich direkt die Simulationszeit beeinflussen. Durch \glqq wait on\grqq, \glqq wait until \grqq und \glqq wait\grqq lässt sich indirekt die Simulationszeit dadurch beeinflussen, dass auf Signale bzw. bestimmte Bedingungen gewartet wird.
 
 \item Wenn sich Eingang a von 0 auf 1 ändert, werden unendlich viele Deltazyklen durchlaufen, da sich der Wert von z jedes mal ändert. Da z in der Sensitivitätsliste des Prozesses steht, wird dieser mit jeder Änderung von z aufgerufen. 
 
