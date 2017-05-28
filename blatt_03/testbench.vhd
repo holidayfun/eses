@@ -1,3 +1,7 @@
+LIBRARY IEEE ;
+USE IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
 entity testbench is
 end testbench;
 
@@ -13,44 +17,309 @@ component alu
                 data: inout std_logic_vector(31 downto 0));
 end component;
 
-signal clk, reset, op1_ready, op2_ready, res_ready: bit;
+signal reset, op1_ready, op2_ready, opID_ready, res_ready: bit;
 signal opID: bit_Vector(1 downto 0);
 signal data: std_logic_vector(31 downto 0);
 signal result: signed(31 downto 0);
-
+signal tmp: signed(31 downto 0);
+signal clk: BIT := '0';
+signal another_vector: std_logic_vector(31 downto 0);
+signal yet_another_vector: std_logic_vector(31 downto 0);
 
 begin
-DUS: entity alu PORT MAP (clk, reset, opID, op1_ready, op2_ready, opID_ready, res_ready,                        data);
+DUS: entity work.alu PORT MAP (clk => clk, reset => reset, opID => opID, op1_ready => op1_ready, op2_ready => op2_ready, opID_ready => opID_ready, res_ready => res_ready, data => data);
 
---clock setzen
+clk <= NOT clk AFTER 10 ns;
+
 stimulate: process
         begin
-                reset <= 1;
-                wait for 5ns;
-                --...
-                --konvertieren mit std_logic_vector(...) bzw signed(...)
-                data <= 5; --konertieren
-                wait for 5ns;
+
+--
+--Die Clock waits kann man bestimmt vereinfachen, aber nach 6 Stunden Fehlersuche
+--habe ich da jetzt leider keinen Nerv mehr dafür, funktioniert auf jeden Fall einwandfrei
+--
+
+                --test for 8 + 4 = 12
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                reset <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(8, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
                 op1_ready <= '1';
 
-                wait for 5ns;
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(4, another_vector'length));
 
-                data <= 4; -- konvertieren
-
-                wait for 5ns;
-
+                wait until clk='1';
+                wait until clk='0';
                 op2_ready <= '1';
 
-                wait for 5ns;
-                opID <= '00';
-
+                wait until clk='1';
+                wait until clk='0';
+                opID <= "00";
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
                 opID_ready <= '1';
-
-                wait for 5ns;
+                reset <= '0';
 
                 wait until res_ready='1';
+                wait until clk='1';
+                result <= signed(data);
+                wait until clk='1';
+                wait until clk='0';
+                assert (result=to_signed(12, data'length)) report "Test1.1 Failed!";
 
-                --assert correct result
+                --reset internal signals
+                op1_ready <='0';
+                op2_ready <='0';
+                opID_ready <='0';
+
+                wait until clk='1';
+                wait until clk='0';
+
+                --test for 10 + 10 = 20
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                reset <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(10, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op1_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(10, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op2_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                opID <= "00";
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                opID_ready <= '1';
+                reset <= '0';
+
+                wait until res_ready='1';
+                wait until clk='1';
+                result <= signed(data);
+                wait until clk='1';
+                wait until clk='0';
+                assert (result=to_signed(20, data'length)) report "Test1.2 Failed!";
+
+                --reset internal signals
+                op1_ready <='0';
+                op2_ready <='0';
+                opID_ready <='0';
+
+                wait until clk='1';
+                wait until clk='0';
+
+                --test for 8 - 4 = 4
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                reset <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(8, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op1_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(4, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op2_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                opID <= "01";
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                opID_ready <= '1';
+                reset <= '0';
+
+                wait until res_ready='1';
+                wait until clk='1';
+                result <= signed(data);
+                wait until clk='1';
+                wait until clk='0';
+                assert (result=to_signed(4, data'length)) report "Test2.1 Failed!";
+
+                --reset internal signals
+                op1_ready <='0';
+                op2_ready <='0';
+                opID_ready <='0';
+
+                wait until clk='1';
+                wait until clk='0';
+
+
+                --test for 8 - 8 = 0
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                reset <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(8, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op1_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(8, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op2_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                opID <= "01";
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                opID_ready <= '1';
+                reset <= '0';
+
+                wait until res_ready='1';
+                wait until clk='1';
+                result <= signed(data);
+                wait until clk='1';
+                wait until clk='0';
+                assert (result=to_signed(0, data'length)) report "Test2.2 Failed!";
+
+                --reset internal signals
+                op1_ready <='0';
+                op2_ready <='0';
+                opID_ready <='0';
+
+                wait until clk='1';
+                wait until clk='0';
+
+                --test for 8 * 4 = 32
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                reset <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(8, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op1_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(4, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op2_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                opID <= "11";
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                opID_ready <= '1';
+                reset <= '0';
+
+                wait until res_ready='1';
+                wait until clk='1';
+                result <= signed(data);
+                wait until clk='1';
+                wait until clk='0';
+                assert (result=to_signed(32, data'length)) report "Test3.1 Failed!";
+
+                --reset internal signals
+                op1_ready <='0';
+                op2_ready <='0';
+                opID_ready <='0';
+
+                wait until clk='1';
+                wait until clk='0';
+
+
+                --test for 8 * 0 = 0
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                reset <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(8, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op1_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                data <= std_logic_vector(to_signed(0, another_vector'length));
+
+                wait until clk='1';
+                wait until clk='0';
+                op2_ready <= '1';
+
+                wait until clk='1';
+                wait until clk='0';
+                opID <= "11";
+                data <= (others => 'Z');
+                wait until clk='1';
+                wait until clk='0';
+                opID_ready <= '1';
+                reset <= '0';
+
+                wait until res_ready='1';
+                wait until clk='1';
+                result <= signed(data);
+                wait until clk='1';
+                wait until clk='0';
+                assert (result=to_signed(0, data'length)) report "Test3.2 Failed!";
+
+                --reset internal signals
+                op1_ready <='0';
+                op2_ready <='0';
+                opID_ready <='0';
+
+                wait until clk='1';
+                wait until clk='0';
+
+
+                wait; --testbench beenden
 
         end process stimulate;
 end behave;
+
