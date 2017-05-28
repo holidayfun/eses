@@ -23,8 +23,6 @@ signal data: std_logic_vector(31 downto 0);
 signal result: signed(31 downto 0);
 signal tmp: signed(31 downto 0);
 signal clk: BIT := '0';
-signal another_vector: std_logic_vector(31 downto 0);
-signal yet_another_vector: std_logic_vector(31 downto 0);
 
 begin
 DUS: entity work.alu PORT MAP (clk => clk, reset => reset, opID => opID, op1_ready => op1_ready, op2_ready => op2_ready, opID_ready => opID_ready, res_ready => res_ready, data => data);
@@ -47,7 +45,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(8, another_vector'length));
+                data <= std_logic_vector(to_signed(8, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -55,7 +53,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(4, another_vector'length));
+                data <= std_logic_vector(to_signed(4, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -93,7 +91,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(10, another_vector'length));
+                data <= std_logic_vector(to_signed(10, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -101,7 +99,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(10, another_vector'length));
+                data <= std_logic_vector(to_signed(10, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -139,7 +137,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(8, another_vector'length));
+                data <= std_logic_vector(to_signed(8, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -147,7 +145,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(4, another_vector'length));
+                data <= std_logic_vector(to_signed(4, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -186,7 +184,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(8, another_vector'length));
+                data <= std_logic_vector(to_signed(8, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -194,7 +192,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(8, another_vector'length));
+                data <= std_logic_vector(to_signed(8, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -232,7 +230,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(8, another_vector'length));
+                data <= std_logic_vector(to_signed(8, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -240,7 +238,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(4, another_vector'length));
+                data <= std_logic_vector(to_signed(4, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -279,7 +277,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(8, another_vector'length));
+                data <= std_logic_vector(to_signed(8, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -287,7 +285,7 @@ stimulate: process
 
                 wait until clk='1';
                 wait until clk='0';
-                data <= std_logic_vector(to_signed(0, another_vector'length));
+                data <= std_logic_vector(to_signed(0, data'length));
 
                 wait until clk='1';
                 wait until clk='0';
@@ -322,4 +320,3 @@ stimulate: process
 
         end process stimulate;
 end behave;
-
