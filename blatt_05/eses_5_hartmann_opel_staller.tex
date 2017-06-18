@@ -1,0 +1,75 @@
+\documentclass[a4paper]{scrartcl}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{verbatim}
+
+\usepackage{listings}
+\setlength{\parindent}{0mm}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+
+\pagestyle{fancy}
+\fancyhead[L]{SS 2017\\Joshua Hartmann}
+\fancyhead[C]{Entwurf und Synthese von Eingebetteten Systemen\\Manfred Opel}
+\fancyhead[R]{Blatt 5\\Nicolas Staller}
+
+\fancyfoot[L]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+\fancyfoot[R]{}
+
+\renewcommand{\textheight}{700px}
+\renewcommand{\footskip}{10px}
+\newcommand*\xor{\mathbin{\oplus}}
+\begin{document}	
+	\section*{Aufgabe 1}
+	
+	\begin{enumerate}[(a)]
+		\item Ja, bei der Synthese würden Latch(es) inferiert werden, da im ELSE Teil nicht spezifiziert ist, was für einen Wert Y erhält und deshalb gespeichert werden muss.
+		
+		\item Die Bridge tritt in Bus A als Slave auf, um Befehle von den Mastern entgegenzunehmen und sie an die Slaves in Bus B weiterzuleiten. In Bus B tritt sie als Master auf, um entsprechende Befehle an die Slaves zu schicken.\\
+		Zusätzlich könnte sie in Bus A als Arbiter auftreten, sollte es zwischen den Mastern zu Konflikten kommen, die Arbitrierung könnte aber auch anders gelöst werden (z.B. durch feste Prioritäten).
+		
+		\item Slave 1 hat die Adresse 0010011\\
+		Slave 3 hat die Adresse 0000101\\
+		
+		\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+			\hline 
+			Takt & 1 & 2 & 3 & 4 & 5 & 6  & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19\\ 
+			\hline 
+			SDL & S & 0 & 0 & 0 & 0 & 1  & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & P \\ 
+			\hline 
+			M1 & S & 0 & 0 & 1 & Z & Z  & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z\\ 
+			\hline 
+			M2 & S & 0 & 0 & 0 & 0 & 1  & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & P\\ 
+			\hline 
+			S1& Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z\\ 
+			\hline 
+			S3& Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & Z & 0  & Z \\ 
+			\hline 
+		\end{tabular} 
+		
+		Takt 1: Start bit\\
+		Takt 2-8: Adress bits (in Takt 4 dominiert M2)\\
+		Takt 9: Read Signal\\
+		Takt 10-17: Daten bits (00000010)\\
+		Takt 18: Ack Bit (wird von S3 auf 0 gezogen)\\
+		Takt 19: Stop Bit
+		
+		Aus dem Diagramm der Vorlesung wird nicht ganz ersichtlich, wie das mit dem Ack Bit funktioniert, da eigentlich auch mehrere Datenbytes gesendet werden könnten. Wir nehmen einfach an, dass nur eines gesendet wird und man im darauffolgenden Takt das Ack Bit setzen kann und der Slave es entsprechend auf 0 zieht.
+		
+		
+		Wir nehmen an, dass ein Z angelegt wird, sobald eine Instanz nichts mehr sendet.\\
+		In Takt 4 setzt sich M2 gegen M1 durch, da er eine 0 schreibt. Danach hört M1 auf zu senden.
+		
+	\end{enumerate}
+
+	
+\end{document}
+
