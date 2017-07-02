@@ -1,0 +1,31 @@
+ 
+****************************************
+Report : area
+Design : ALU_ENTITY
+Version: M-2016.12-SP3
+Date   : Sat Jul  1 15:24:48 2017
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /afs/wsi/es/pdks/nangate/NanGate_45nm_2010.12/Front_End/Liberty/CCS/NangateOpenCellLibrary_typical_ccs.db)
+
+Number of ports:                          426
+Number of nets:                          2379
+Number of cells:                         1530
+Number of combinational cells:           1492
+Number of sequential cells:                35
+Number of macros/black boxes:               0
+Number of buf/inv:                        206
+Number of references:                      17
+
+Combinational area:               3104.220010
+Buf/Inv area:                      129.541999
+Noncombinational area:             144.703995
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                  3248.924005
+Total area:                 undefined
+1

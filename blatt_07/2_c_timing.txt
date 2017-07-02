@@ -1,0 +1,84 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : ALU_ENTITY
+Version: M-2016.12-SP3
+Date   : Sat Jul  1 15:24:56 2017
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: IN0[1] (input port clocked by CLK)
+  Endpoint: RESULT_reg[31]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  ALU_ENTITY         5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.00       0.00 f
+  IN0[1] (in)                                             0.00       0.00 f
+  mult_25/A[1] (ALU_ENTITY_DW02_mult_0)                   0.00       0.00 f
+  mult_25/U132/ZN (INV_X1)                                0.04       0.04 r
+  mult_25/U66/Z (BUF_X1)                                  0.10       0.14 r
+  mult_25/U474/ZN (NOR2_X1)                               0.04       0.18 f
+  mult_25/U62/Z (XOR2_X1)                                 0.08       0.26 f
+  mult_25/S2_2_29/S (FA_X1)                               0.14       0.40 r
+  mult_25/S2_3_28/S (FA_X1)                               0.12       0.52 f
+  mult_25/S2_4_27/S (FA_X1)                               0.14       0.65 r
+  mult_25/S2_5_26/S (FA_X1)                               0.12       0.77 f
+  mult_25/S2_6_25/S (FA_X1)                               0.14       0.91 r
+  mult_25/S2_7_24/S (FA_X1)                               0.12       1.02 f
+  mult_25/S2_8_23/S (FA_X1)                               0.14       1.16 r
+  mult_25/S2_9_22/S (FA_X1)                               0.12       1.28 f
+  mult_25/S2_10_21/S (FA_X1)                              0.14       1.42 r
+  mult_25/S2_11_20/S (FA_X1)                              0.12       1.53 f
+  mult_25/S2_12_19/S (FA_X1)                              0.14       1.67 r
+  mult_25/S2_13_18/S (FA_X1)                              0.12       1.79 f
+  mult_25/S2_14_17/S (FA_X1)                              0.14       1.92 r
+  mult_25/S2_15_16/S (FA_X1)                              0.12       2.04 f
+  mult_25/S2_16_15/S (FA_X1)                              0.14       2.18 r
+  mult_25/S2_17_14/S (FA_X1)                              0.12       2.29 f
+  mult_25/S2_18_13/S (FA_X1)                              0.14       2.43 r
+  mult_25/S2_19_12/S (FA_X1)                              0.12       2.55 f
+  mult_25/S2_20_11/S (FA_X1)                              0.14       2.68 r
+  mult_25/S2_21_10/S (FA_X1)                              0.12       2.80 f
+  mult_25/S2_22_9/S (FA_X1)                               0.14       2.94 r
+  mult_25/S2_23_8/S (FA_X1)                               0.12       3.06 f
+  mult_25/S2_24_7/S (FA_X1)                               0.14       3.19 r
+  mult_25/S2_25_6/S (FA_X1)                               0.12       3.31 f
+  mult_25/S2_26_5/S (FA_X1)                               0.14       3.45 r
+  mult_25/S2_27_4/S (FA_X1)                               0.12       3.56 f
+  mult_25/S2_28_3/S (FA_X1)                               0.14       3.70 r
+  mult_25/S2_29_2/S (FA_X1)                               0.12       3.82 f
+  mult_25/S2_30_1/S (FA_X1)                               0.14       3.95 r
+  mult_25/S4_0/S (FA_X1)                                  0.11       4.07 f
+  mult_25/PRODUCT[31] (ALU_ENTITY_DW02_mult_0)            0.00       4.07 f
+  U237/ZN (AOI221_X1)                                     0.09       4.16 r
+  U235/ZN (AOI21_X1)                                      0.04       4.20 f
+  RESULT_reg[31]/D (DFF_X1)                               0.01       4.21 f
+  data arrival time                                                  4.21
+
+  clock CLK (rise edge)                                  25.00      25.00
+  clock network delay (ideal)                             0.00      25.00
+  RESULT_reg[31]/CK (DFF_X1)                              0.00      25.00 r
+  library setup time                                     -0.05      24.95
+  data required time                                                24.95
+  --------------------------------------------------------------------------
+  data required time                                                24.95
+  data arrival time                                                 -4.21
+  --------------------------------------------------------------------------
+  slack (MET)                                                       20.75
+
+
+1
