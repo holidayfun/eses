@@ -1,0 +1,16 @@
+Total cell area:                  3248.924005
+Einheit der Fläche: um^2
+Einzelne Zellen haben eine Cell Area mit dieser Einheit, also wohl auch die Gesamtfläche
+
+
+Taktperiode von 25ns angenommen
+Der längste Pfad hat 4.21ns
+Slack von 20.75ns
+
+
+
+
+Das Result Signal wird teilweise von mehreren Treibern beschrieben und erhält deshalb kein
+definiertes Signal, das liegt daran, dass unsere Testbench einen zu schnellen Takt verwendet.
+nutzen wir eine Taktperiode von 5ns, was uns durch die Timing Analyse als machbar angezeigt wurde, erhalten
+wir korrekte Ergebnisse
