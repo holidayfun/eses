@@ -31,10 +31,50 @@
 \section*{Aufgabe 1: High Level Synthese: Hu- und List-Scheduling}
 
 \begin{enumerate}[(a)]
+	\item Die NOPs sind jeweils nur angedeutet um die Übersichtlichkeit zu verbessern.
+	
+	ASAP:\\	
+	\includegraphics[scale=0.5, angle = -90]{Image124}
+	
+	ALAP:\\	
+	\includegraphics[scale=0.5, angle = -90]{Image125}
+	
 	\item
+	
+	Sequenzgraph mit Knotengewicht:
+	
+	\includegraphics[scale=0.5, angle = -90]{Image126}
+	\newpage
+	Untere Schranke:
+	
+	\includegraphics[width=1\textwidth]{Image127}
+	\newpage
+	Ablaufplan nach Hu:
+	
+	\includegraphics[scale=0.5, angle = 90]{Image128}
+	
+	\item \hfill
+	
+	\begin{tabular}{llll}
+		& ASAP & ALAP & HU \\
+		Fläche & 14 ALUS & 6 ALUS& 5 ALUS \\
+		Latenz & 5 Takte & 5 Takte &  5 Takte\\		
+	\end{tabular}
+	
+	Alle drei Scheduling Verfahren erzeugen ein Scheduling mit gleicher Latenz, die Fläche ist bei HUs Algorithmus allerdings am geringsten. Laut Foliensatz 07, S.37 erzeugt HUs Algorithmus ein Scheduling minimaler Latenz bei minimaler Fläche, wenn die Voraussetzungen, wie in diesem Beispiel, erfüllt sind. Es kann also kein Scheduling mit kleinerer Latenz geben.
+	
 	\item
-	\item
-	\item
+	
+	Listenbasierter Ablaufplan: \\
+	Die hochgestellten Zahlen über den Knoten repräsentieren hier das Gewicht der Knoten, also die Anwendung der \glqq kritischer Pfad\grqq - Regel.
+	
+	\includegraphics[scale=0.8]{Image129}
+	\includegraphics[scale=0.8]{Image130}
+	
+	Graphische Darstellung des Ablaufplans:
+	
+	\includegraphics[scale=0.8]{Image131}
+	
 \end{enumerate}
 
 \section*{Aufgabe 2: High Level Synthese: Force-Directed Scheduling}
